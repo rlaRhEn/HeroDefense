@@ -21,7 +21,7 @@ public class PlayerObj : MonoBehaviour
         attack,
         death,
     }
-    private PlayerState _currentState;
+    public PlayerState _currentState;
     public PlayerState CurrentState{
         get => _currentState;
         set {
@@ -33,9 +33,6 @@ public class PlayerObj : MonoBehaviour
     private MyEvent _stateChanged = new MyEvent();
 
     public Vector3 _goalPos;
-    // Start is called before the first frame update
-
-    // Update is called once per frame
     void Start()
     {
         if(_prefabs == null )
@@ -66,7 +63,7 @@ public class PlayerObj : MonoBehaviour
 
     }
 
-    void DoMove()
+    void DoMove()//목표 지점으로 이동
     {
         Vector3 _dirVec  = _goalPos - transform.position ;
         Vector3 _disVec = (Vector2)_goalPos - (Vector2)transform.position ;

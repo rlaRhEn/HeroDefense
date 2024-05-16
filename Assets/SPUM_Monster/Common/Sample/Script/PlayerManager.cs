@@ -39,6 +39,7 @@ public class PlayerManager : MonoBehaviour
             {
                 if(hit.collider.CompareTag("Player"))
                 {
+                    Debug.Log(hit);
                     _nowObj = hit.collider.GetComponent<PlayerObj>();
                 }
                 else
@@ -46,6 +47,7 @@ public class PlayerManager : MonoBehaviour
                     //Set move Player object to this point
                     if(_nowObj!=null)
                     {
+                        Debug.Log(hit);
                         Vector2 goalPos = hit.point;
                         _goalObjCircle.transform.position = hit.point;
                         _nowObj.SetMovePos(goalPos);
@@ -53,7 +55,6 @@ public class PlayerManager : MonoBehaviour
                 }
             }
         }
-
         if(_nowObj!=null)
         {
             _playerObjCircle.transform.position = _nowObj.transform.position;
@@ -62,6 +63,7 @@ public class PlayerManager : MonoBehaviour
 
     public void GetPlayerList()
     {
+        Debug.Log("리스트저장!");
         float numXStart = 0;
         float numYStart = 0;
 
