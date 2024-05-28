@@ -8,8 +8,12 @@ public class TowerManager : MonoBehaviour
     [SerializeField]TowerSpawner towerSpawer;
     [SerializeField]TowerDataViewer towerDataViewer;
 
-    public TowerCon nowObj;
-    public Transform towerObjCircle, goalObjCircle;
+    //public TowerCon nowObj;
+    //public Transform towerObjCircle, goalObjCircle;
+
+    private Transform selectedTile;
+    private Transform previousTile; // 이전에 선택한 타일
+    private Color originalColor; // 이전 타일의 원래 색상
 
     private void Update()
     {
@@ -18,26 +22,61 @@ public class TowerManager : MonoBehaviour
 
     void ClickMouse()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (hit.collider.CompareTag("TileField"))
+            if (hit.collider != null)
             {
-                Debug.Log("타일선택");
-                towerSpawer.SpawnTower(hit.transform);
-            }
-            else if (hit.collider.CompareTag("Player"))
-            {
-                Debug.Log("타워 선택");
-                towerDataViewer.OpenPanel(hit.transform);
-            }
-            else
-            {
+                if (hit.collider.CompareTag("TileField")) // 선택 시 구매 -> 선택 후 버튼을 눌러야 구매
+                {
+                    Debug.Log("타일선택");
 
+                    // 이전 타일의 알파값 복원
+                    if (previousTile != null)
+                    {
+                        SpriteRenderer previousRenderer = previousTile.GetComponent<SpriteRenderer>();
+                        if (previousRenderer != null)
+                        {
+                            previousRenderer.color = originalColor;
+                        }
+                    }
+
+                    // 새로 선택한 타일의 알파값 변경
+                    SpriteRenderer spriteRenderer = hit.collider.GetComponent<SpriteRenderer>();
+                    if (spriteRenderer != null)
+                    {
+                        originalColor = spriteRenderer.color; // 현재 색상 저장
+                        Color newColor = spriteRenderer.color;
+                        newColor.a = 0.5f; // 원하는 알파값 (0.0f ~ 1.0f)
+                        spriteRenderer.color = newColor;
+                    }
+
+                    previousTile = hit.transform; // 현재 타일을 이전 타일로 설정
+                    selectedTile = hit.transform; // 선택된 타일 설정
+
+                    // 타워 생성
+                    //towerSpawer.SpawnTower(hit.transform);
+                }
+                else if (hit.collider.CompareTag("Player"))
+                {
+                    Debug.Log("타워 선택");
+                    towerDataViewer.OpenPanel(hit.transform);
+                }
             }
         }
     }
-
+   public Transform GetSelectedTile()
+    {
+        return selectedTile;
+    }
+    public void BuildTower()
+    {
+        Transform selecteTile = GetSelectedTile();
+        if(selecteTile != null)
+        {
+            towerSpawer.SpawnTower(selecteTile);
+        }
+    }
 
     //void ClickMove() //캐릭터 무브
     //{

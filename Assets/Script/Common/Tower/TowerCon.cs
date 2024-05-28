@@ -148,7 +148,7 @@ public class TowerCon : MonoBehaviour
     {
         while (true)
         {
-            //spum_Prefabs.PlayAnimation("0_idle");
+ 
             // 제일 가까이 있는 적을 찾기 위해 최초 거리를 최대한 크게 설정
             float closestDisSqr = Mathf.Infinity;
             Transform closestTarget = null;
@@ -208,7 +208,7 @@ public class TowerCon : MonoBehaviour
     {
         while(true)
         {
-            spum_Prefabs.PlayAnimation("0_idle");
+            //spum_Prefabs.PlayAnimation("0_idle");
             spum_Prefabs.PlayAnimation("2_Attack_Normal");
             //타겟이 있는지 검사
             if (target ==null || !target.gameObject.activeSelf)
@@ -227,7 +227,7 @@ public class TowerCon : MonoBehaviour
             }
             
             yield return new WaitForSeconds(attackSpeed);
-            //spum_Prefabs.PlayAnimation("2_Attack_Normal");
+            spum_Prefabs.PlayAnimation("2_Attack_Normal");
             Transform projectile =  GameManager.instance.pool.GetProJectile(0).transform;
             projectile.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             projectile.GetComponent<Projectile>().Setup(target,attack + towerTemplate.weapon[level].attackIncrease);

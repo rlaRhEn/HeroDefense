@@ -8,7 +8,7 @@ public class MonsterCon : MonoBehaviour
 {
     [Header("Stat")]
     public int monsterCode;
-    [SerializeField] float currentHp,maxHp, armor, moveSpeed;
+    public float currentHp,maxHp, armor, moveSpeed;
     [SerializeField] string type;
     [SerializeField] int gold = 10;
 
@@ -27,6 +27,7 @@ public class MonsterCon : MonoBehaviour
     bool isDie = false; //적이 사망하면 isDie를 true로 설정
     public GameObject damageText;
     public Transform textPos;
+    Wave currentWave;
 
     public IObjectPool<GameObject> Pool{ get; set; }
     //RectTransform rect;
@@ -37,18 +38,22 @@ public class MonsterCon : MonoBehaviour
         spum_prefabs = GetComponent<SPUM_Prefabs>();
         UnityGoogleSheet.Load<monsterBal.Data>();
 
-       
+        StartCoroutine(Initialize());
     }
-
-    private void Start()
+    private IEnumerator Initialize() //GameManager에서 로드한 구글시트 데이터를 여기서 사용.
     {
-        maxHp = monsterBal.Data.DataMap[monsterCode].hp;
-        armor = monsterBal.Data.DataMap[monsterCode].armor;
-        moveSpeed = monsterBal.Data.DataMap[monsterCode].moveSpeed;
-        type = monsterBal.Data.DataMap[monsterCode].type;
-        currentHp = maxHp;
-
+        yield return new WaitUntil(() => GameManager.instance != null);
+        var data = GameManager.instance.GetMonsterData(monsterCode);
+        if(data != null)
+        {
+            maxHp = data.hp;
+            armor = data.armor;
+            moveSpeed = data.moveSpeed;
+            type = data.type;
+            currentHp = maxHp;
+        }
     }
+
     private void OnEnable()
     {
         // WayPoint 태그로 등록된 모든 오브젝트를 찾아서 wayPoints 배열에 추가
