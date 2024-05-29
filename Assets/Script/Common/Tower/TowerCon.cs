@@ -12,7 +12,7 @@ public class TowerCon : MonoBehaviour
     [SerializeField] PlayerGold playerGold;
     [Header("Stat")]
     [SerializeField] int characterCode, level;
-    [SerializeField] float attack, attackSpeed, speed, attackTimer;
+    [SerializeField] float attackSpeed, speed, attackTimer;
     [SerializeField] string type;
     [SerializeField] float attackRange;// 현재 타겟
 
@@ -23,7 +23,7 @@ public class TowerCon : MonoBehaviour
     public float Attack => towerTemplate.weapon[level].attack;
     public float AttackIncrease => towerTemplate.weapon[level].attackIncrease;
     public int Cost => towerTemplate.weapon[level].cost;
-    public int Probablilty => towerTemplate.weapon[level].probability;
+    public float Probablilty => towerTemplate.weapon[level].probability;
     public int Fail => towerTemplate.weapon[level].fail;
 
     public float Range => attackRange;
@@ -53,7 +53,6 @@ public class TowerCon : MonoBehaviour
     void Start()
     {
         playerGold = GameObject.Find("GameManager").GetComponent<PlayerGold>();
-        //attack = characterBal.Balance.BalanceMap[characterCode].attack;
         attackSpeed = characterBal.Balance.BalanceMap[characterCode].attackSpeed;
         attackRange = characterBal.Balance.BalanceMap[characterCode].attackRange;
         type = characterBal.Balance.BalanceMap[characterCode].type;
@@ -230,22 +229,38 @@ public class TowerCon : MonoBehaviour
             spum_Prefabs.PlayAnimation("2_Attack_Normal");
             Transform projectile =  GameManager.instance.pool.GetProJectile(0).transform;
             projectile.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            projectile.GetComponent<Projectile>().Setup(target,attack + towerTemplate.weapon[level].attackIncrease);
+            projectile.GetComponent<Projectile>().Setup(target, towerTemplate.weapon[level].attack);
             
         }
     }
     public bool Upgrade()
     {
+        
         //타워 업그레이드에 필요한 골드가 충분한지 검사
-        if(playerGold.CurrentGold < towerTemplate.weapon[level+1].cost)
+        if (playerGold.CurrentGold < towerTemplate.weapon[level+1].cost)
         {
+            //돈 부족
             return false;
         }
-        //확률 넣기
-        //타워레벨 증가
-        level++;
         playerGold.CurrentGold -= towerTemplate.weapon[level].cost;
-        return true;
+        //확률 넣기   //타워레벨 증가
+        if (TrySuccess())
+        {
+            level++;
+            Debug.Log("강화성공");
+            return true;
+        }
+        else // 10레벨 이상일 시 레벨 하락
+        {
+            Debug.Log("강화 실패");
+            return false;
+        }
+    }
+    public bool TrySuccess()
+    {
+        float randomValue = Random.value; // 0.0에서 1.0사이의 난수를 생성
+        Debug.Log(randomValue);
+        return randomValue < towerTemplate.weapon[level + 1].probability / 100; //레벨당 확률로 true 변화
     }
     public void Sell()
     {

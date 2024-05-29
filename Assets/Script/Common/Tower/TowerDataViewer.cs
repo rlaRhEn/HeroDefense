@@ -54,7 +54,7 @@ public class TowerDataViewer : MonoBehaviour
         //업그레이드가 불가능해지면 버튼 비활성화
         buttonUpgrade.interactable = currentTower.Level < currentTower.MaxLevel ? true : false;
     }
-    public void OnClickEventTowerUpgrade()
+    public void OnClickEventTowerUpgrade() //타워 업그레이드
     {
         //타워 업그레이드 시도 (성공: true , 실패: false)
         bool isSuccess = currentTower.Upgrade();
@@ -65,7 +65,7 @@ public class TowerDataViewer : MonoBehaviour
             UpdateTowerData();
         }
     }
-    public void OnClickEventTowerSell()
+    public void OnClickEventTowerSell() //타워 판매
     {
         //타워 판매
         currentTower.Sell();

@@ -7,6 +7,7 @@ public class TowerManager : MonoBehaviour
 {
     [SerializeField]TowerSpawner towerSpawer;
     [SerializeField]TowerDataViewer towerDataViewer;
+    [SerializeField] TowerAttackRange towerattackRange;
 
     //public TowerCon nowObj;
     //public Transform towerObjCircle, goalObjCircle;
@@ -30,6 +31,8 @@ public class TowerManager : MonoBehaviour
                 if (hit.collider.CompareTag("TileField")) // 선택 시 구매 -> 선택 후 버튼을 눌러야 구매
                 {
                     Debug.Log("타일선택");
+                    towerDataViewer.ClosePanel();
+                    towerattackRange.OffAttackRange();
 
                     // 이전 타일의 알파값 복원
                     if (previousTile != null)
@@ -54,13 +57,12 @@ public class TowerManager : MonoBehaviour
                     previousTile = hit.transform; // 현재 타일을 이전 타일로 설정
                     selectedTile = hit.transform; // 선택된 타일 설정
 
-                    // 타워 생성
-                    //towerSpawer.SpawnTower(hit.transform);
                 }
                 else if (hit.collider.CompareTag("Player"))
                 {
                     Debug.Log("타워 선택");
                     towerDataViewer.OpenPanel(hit.transform);
+
                 }
             }
         }
