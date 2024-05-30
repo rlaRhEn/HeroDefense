@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Pool;
 using UGS;
 
@@ -20,19 +21,21 @@ public class MonsterCon : MonoBehaviour
     [SerializeField] Vector3 moveDirection = Vector3.zero;
 
     [Header("etc")]
+    [SerializeField] GameObject dmgText;
+    Canvas canvas;
     PlayerGold playerGold;
     SPUM_Prefabs spum_prefabs;
     MonsterSpawner monsterSpawner;
     float monsterX = -0.7f;
     bool isDie = false; //적이 사망하면 isDie를 true로 설정
-    public GameObject damageText;
-    public Transform textPos;
+   
     Wave currentWave;
 
     public IObjectPool<GameObject> Pool{ get; set; }
     //RectTransform rect;
     private void Awake()
     {
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         playerGold = GameObject.Find("GameManager").GetComponent<PlayerGold>();
         monsterSpawner = GameObject.Find("PoolManager").GetComponent<MonsterSpawner>();
         spum_prefabs = GetComponent<SPUM_Prefabs>();
@@ -136,21 +139,22 @@ public class MonsterCon : MonoBehaviour
     {
         moveDirection = direction;
     }
-    public void TakeDamage(float damage)
+    public void TakeDamage(Vector3 hitPos, float damage)
     {
         Debug.Log(currentHp);
         //적의 체력이 damage만큼 감소해서 죽을 상황일 때 여러타워의 공격을 동시에 받으면
-        //Ondie()가 여러번 실행 할 수 있다 현재 적의 상ㅌ개ㅏ 사망상태이면 아래코드를 실행하지않는다.
+        //Ondie()가 여러번 실행 할 수 있다 현재 적의 상태가 사망상태이면 아래코드를 실행하지않는다.
         if (isDie == true) return;
-
         currentHp -= damage;
-        GameObject hudText = Instantiate(damageText); //생성할 텍스트 오브젝트
-        hudText.transform.position = textPos.position;//표시될 위치
-        hudText.GetComponent<DamageText>(); //데미지 전달
-        if (currentHp <= 0)
+        GameObject damageText = Instantiate(dmgText, hitPos, Quaternion.identity, canvas.transform);
+        damageText.GetComponent<Text>().text = damage.ToString();
+
+        if (currentHp <= 0) //체력 0이하 속도0,사망, 태그
         {
             isDie = true;
-            OnDieMonster();
+            spum_prefabs.PlayAnimation("death");
+            moveSpeed = 0;
+            Invoke("OnDieMonster", 0.4f);
         }
     }
 

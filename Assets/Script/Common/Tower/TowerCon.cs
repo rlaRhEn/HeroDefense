@@ -157,7 +157,7 @@ public class TowerCon : MonoBehaviour
                 // 몬스터 풀의 각 몬스터를 가져와서 transform 속성을 사용
                 foreach (GameObject monster in GameManager.instance.pool.monsterPools[i])
                 {
-                    if (monster != null && monster.activeSelf)
+                    if (monster != null && monster.CompareTag("Monster"))
                     {
                         float distance = Vector3.Distance(monster.transform.position, transform.position);
                         if (distance <= attackRange && distance <= closestDisSqr)

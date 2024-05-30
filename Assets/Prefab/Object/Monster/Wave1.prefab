@@ -305,8 +305,7 @@ MonoBehaviour:
   wayPoints: []
   currentIndex: 0
   moveDirection: {x: 0, y: 0, z: 0}
-  damageText: {fileID: 5429369541550492835, guid: e53e5786079e7264384e85a6f9de7866, type: 3}
-  textPos: {fileID: 9071018275416079719}
+  dmgText: {fileID: 8649065831377275885, guid: 7268a64b23dca644296dfdda6c69b458, type: 3}
 --- !u!114 &1281696371039567513
 MonoBehaviour:
   m_ObjectHideFlags: 0
