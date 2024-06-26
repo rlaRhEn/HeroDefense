@@ -10,14 +10,29 @@ public class ShowText : MonoBehaviour
 
     public Text timeText, goldText, waveText,monsterCountText;
     public Text hpText, armorText, typeText;
+    [SerializeField] Font customFont;
+
 
     [SerializeField] PlayerGold playerGold;
     [SerializeField] WaveSystem waveSystem;
     [SerializeField] MonsterSpawner monsterSpawner;
 
+    private void SetAllTextFont() //텍스트 폰트설정
+    {
+        Text[] allTextComponents = { timeText, goldText, waveText, monsterCountText, hpText, armorText, typeText };
+
+        foreach(Text textComponents in allTextComponents)
+        {
+            if(textComponents != null)
+            {
+                textComponents.font = customFont;
+            }
+        }
+    }
     private void Start()
     {
         StartCoroutine(Initialize());
+        SetAllTextFont();
     }
     private IEnumerator Initialize()
     {

@@ -1717,8 +1717,7 @@ MonoBehaviour:
   wayPoints: []
   currentIndex: 0
   moveDirection: {x: 0, y: 0, z: 0}
-  damageText: {fileID: 6717722652725602875, guid: eb59e445baee77b4387a34847c41d7cc, type: 3}
-  textPos: {fileID: 4494206337364823189}
+  dmgText: {fileID: 8649065831377275885, guid: 7268a64b23dca644296dfdda6c69b458, type: 3}
 --- !u!1 &3568049697309815599
 GameObject:
   m_ObjectHideFlags: 0

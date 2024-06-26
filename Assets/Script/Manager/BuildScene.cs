@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public enum SceneNames { loading =0, Lobby, tutorial }
+public enum SceneNames { loading =0, Lobby, Defense }
 public class BuildScene
 {
   public static string GetActiveScene()

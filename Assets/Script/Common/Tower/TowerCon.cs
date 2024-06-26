@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UGS;
 
 public enum WeaponState { SearchTarget, AttackToTarget}
-public class TowerCon : MonoBehaviour
+public class TowerCon : MonoBehaviour //시발 싹 다 고쳐야하냐?;;;;
 {
     public SPUM_Prefabs spum_Prefabs;
     [SerializeField] TowerTemplate towerTemplate;
@@ -33,16 +33,16 @@ public class TowerCon : MonoBehaviour
     public Vector3 goalPos;
 
 
-    public enum TowerState
-    {
-        idle,
-        run,
-        attack,
-        skill,
-        stun,
-        death
-    }
-    public TowerState tower_State;
+    //public enum TowerState
+    //{
+    //    idle,
+    //    run,
+    //    attack,
+    //    skill,
+    //    stun,
+    //    death
+    //}
+    //public TowerState tower_State;
     public WeaponState weaponState = WeaponState.SearchTarget;
 
     private void Awake()
@@ -84,66 +84,66 @@ public class TowerCon : MonoBehaviour
         //새로운 코루틴 실행
         StartCoroutine(weaponState.ToString());
     }
-    void CheckState() //애니메이션 state
-    {
-        switch (tower_State)
-        {
-            case TowerState.idle:
-                break;
-            case TowerState.attack:
-                break;
-            case TowerState.run:
-                DoMove();
-                break;
-            case TowerState.skill:
-                break;
-        }
-    }
+    //void CheckState() //수정
+    //{
+    //    switch (tower_State)
+    //    {
+    //        case TowerState.idle:
+    //            break;
+    //        case TowerState.attack:
+    //            break;
+    //        case TowerState.run:
+    //            DoMove();
+    //            break;
+    //        case TowerState.skill:
+    //            break;
+    //    }
+    //}
 
-    public void SetState(TowerState state)
-    {
-        tower_State = state;
-        switch (tower_State)
-        {
-            case TowerState.idle:
-                spum_Prefabs.PlayAnimation("0_idle");
-                break;
-            case TowerState.attack:
-                spum_Prefabs.PlayAnimation("2_Attack_Normal");
-                break;
-            case TowerState.run:
-                spum_Prefabs.PlayAnimation("run");
+    //public void SetState(TowerState state) //수정
+    //{
+    //    tower_State = state;
+    //    switch (tower_State)
+    //    {
+    //        case TowerState.idle:
+               
+    //            break;
+    //        case TowerState.attack:
+    //            spum_Prefabs.PlayAnimation("0_idle");
+    //            break;
+    //        case TowerState.run:
+    //            spum_Prefabs.PlayAnimation("run");
 
-                break;
-            case TowerState.skill:
-                spum_Prefabs.PlayAnimation("2_Attack_Magic");
-                break;
-        }
-    }
+    //            break;
+    //        case TowerState.skill:
+    //            spum_Prefabs.PlayAnimation("2_Attack_Magic");
+    //            break;
+    //    }
+    //}
    
-    public void DoMove()
-    {
+    //public void DoMove() //필요 x
+    //{
         
-        Vector3 _dirVec = goalPos - transform.position;
-        Vector3 _disVec = (Vector2)goalPos - (Vector2)transform.position;
-        if (_disVec.sqrMagnitude < 0.1f)
-        {
-            SetState(TowerState.idle);
-            return;
-        }
-        Vector3 _dirMVec = _dirVec.normalized;
-        transform.position += (_dirMVec * speed * Time.deltaTime);
+    //    Vector3 _dirVec = goalPos - transform.position;
+    //    Vector3 _disVec = (Vector2)goalPos - (Vector2)transform.position;
+    //    if (_disVec.sqrMagnitude < 0.1f)
+    //    {
+    //        SetState(TowerState.idle);
+    //        return;
+    //    }
+    //    Vector3 _dirMVec = _dirVec.normalized;
+    //    transform.position += (_dirMVec * speed * Time.deltaTime);
 
 
-        if (_dirMVec.x > 0) spum_Prefabs.transform.localScale = new Vector3(-1, 1, 1);
-        else if (_dirMVec.x < 0) spum_Prefabs.transform.localScale = new Vector3(1, 1, 1);
-    }
-    public void SetMovePos(Vector2 pos)//목표지점이동
-    {
-        goalPos = pos;
-        SetState(TowerState.run);
-    }
-    IEnumerator SearchTarget()
+    //    if (_dirMVec.x > 0) spum_Prefabs.transform.localScale = new Vector3(-1, 1, 1);
+    //    else if (_dirMVec.x < 0) spum_Prefabs.transform.localScale = new Vector3(1, 1, 1);
+    //}
+    //public void SetMovePos(Vector2 pos)//목표지점이동
+    //{
+    //    goalPos = pos;
+    //    SetState(TowerState.run);
+    //}
+    IEnumerator SearchTarget() //수정
     {
         while (true)
         {
@@ -164,6 +164,7 @@ public class TowerCon : MonoBehaviour
                         {
                             closestDisSqr = distance;
                             closestTarget = monster.transform;
+                            spum_Prefabs.PlayAnimation("0_idle");
                         }
                     }
                 }
@@ -178,37 +179,10 @@ public class TowerCon : MonoBehaviour
             yield return null;
         }
     }
-    //IEnumerator SearchTarget()
-    //{
-    //    while(true)
-    //    {
-    //        제일 가까이 있는 적을 찾기 위해 최초거리를 최대한 크게설정
-    //        float closesetDisSqr = Mathf.Infinity;
-
-    //        for (int i = 0; i < GameManager.instance.pool.monsterPools.Length; i++)
-    //        {
-    //            GameObject monster = GameManager.instance.pool.monsterPools[0];
-    //            Transform monsterTransform = monster.transform;
-    //            float distance = Vector3.Distance(GameManager.instance.pool.monsterPools[i].transform.position, transform.position);
-    //            if (distance <= attackRange && distance <= closesetDisSqr)
-    //            {
-    //                closesetDisSqr = distance;
-    //                target = GameManager.instance.pool.monsterPools[i].transform;
-    //            }
-    //        }
-    //        if(target != null)
-    //        {
-    //            ChangeState(WeaponState.AttackToTarget);
-    //        }
-    //        yield return null;
-    //    }
-    //}
-    IEnumerator AttackToTarget()
+    IEnumerator AttackToTarget() //수정
     {
         while(true)
         {
-            //spum_Prefabs.PlayAnimation("0_idle");
-            spum_Prefabs.PlayAnimation("2_Attack_Normal");
             //타겟이 있는지 검사
             if (target ==null || !target.gameObject.activeSelf)
             {
@@ -226,16 +200,26 @@ public class TowerCon : MonoBehaviour
             }
             
             yield return new WaitForSeconds(attackSpeed);
-            spum_Prefabs.PlayAnimation("2_Attack_Normal");
-            Transform projectile =  GameManager.instance.pool.GetProJectile(0).transform;
+            //직업당 공격 프로젝타일 바꿔야함
+            DoAttacker();
+            Transform projectile =  SetProjectile();//
             projectile.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             projectile.GetComponent<Projectile>().Setup(target, towerTemplate.weapon[level].attack);
             
         }
     }
-    public bool Upgrade()
+    public Transform SetProjectile() //overrride 대상
     {
-        
+        Transform projectile = GameManager.instance.pool.GetProJectile(0).transform; //직업당 공격 프로젝타일 바꿔야함
+        return projectile; 
+    }
+    public void DoAttacker() //override 대상
+    {
+        spum_Prefabs.PlayAnimation("2_Attack_Normal");
+        spum_Prefabs.PlayAnimation("0_idle");
+    }
+    public bool Upgrade() //강화
+    {
         //타워 업그레이드에 필요한 골드가 충분한지 검사
         if (playerGold.CurrentGold < towerTemplate.weapon[level+1].cost)
         {
