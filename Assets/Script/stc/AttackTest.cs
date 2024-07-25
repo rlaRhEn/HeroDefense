@@ -41,11 +41,10 @@ public abstract class  AttackTest : MonoBehaviour
         switch(unit_State)
         {
             case Unit_State.idle:
-               
                 spum_prefabs.PlayAnimation("0_idle");
+
                 break;
             case Unit_State.attack:
-                spum_prefabs.PlayAnimation("0_idle");
                
                 break;
         }
@@ -85,9 +84,7 @@ public abstract class  AttackTest : MonoBehaviour
     }
     public virtual void DoAttack() //공격 애니메이션 attackNormal 실행 3초뒤 idle 3초 뒤 attackNormal 다시 공격 모션하는데 총 6초 ;
     { 
-        //spum_prefabs.PlayAnimation("2_Attack_Normal");
-        //spum_prefabs.PlayAnimation("0_idle");
-        //SetProjectile();
+
     }
     public virtual void SetProjectile() //공격 무기
     {

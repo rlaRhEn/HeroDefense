@@ -14,123 +14,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 6621557017117235484, guid: b863f824da3a10145aebec099f964dd7, type: 3}
   weapon:
-  - attack: 10
-    attackIncrease: 2
-    cost: 2
-    probability: 95
-    fail: 5
-    sell: 20
-  - attack: 12
-    attackIncrease: 2
-    cost: 3
-    probability: 90
-    fail: 10
-    sell: 20
-  - attack: 14
-    attackIncrease: 2
-    cost: 4
-    probability: 85
-    fail: 15
-    sell: 20
-  - attack: 16
+  - attack: 5
     attackIncrease: 2
     cost: 5
-    probability: 80
-    fail: 20
-    sell: 20
-  - attack: 18
+    probability: 52.5
+    fail: 47.5
+    sell: 0
+  - attack: 7
     attackIncrease: 2
-    cost: 6
-    probability: 75
-    fail: 25
-    sell: 20
-  - attack: 20
+    cost: 5
+    probability: 52.5
+    fail: 47.5
+    sell: 0
+  - attack: 9
+    attackIncrease: 2
+    cost: 5
+    probability: 47.25
+    fail: 52.75
+    sell: 0
+  - attack: 11
+    attackIncrease: 2
+    cost: 5
+    probability: 42
+    fail: 58
+    sell: 0
+  - attack: 13
     attackIncrease: 2
     cost: 7
-    probability: 70
-    fail: 30
-    sell: 20
-  - attack: 22
-    attackIncrease: 4
-    cost: 8
-    probability: 65
-    fail: 35
+    probability: 42
+    fail: 58
     sell: 0
-  - attack: 0
-    attackIncrease: 4
-    cost: 9
-    probability: 60
-    fail: 40
-    sell: 0
-  - attack: 0
-    attackIncrease: 4
-    cost: 12
-    probability: 55
-    fail: 45
-    sell: 0
-  - attack: 0
-    attackIncrease: 4
-    cost: 12
-    probability: 50
-    fail: 50
-    sell: 0
-  - attack: 0
+  - attack: 15
     attackIncrease: 5
+    cost: 7
+    probability: 42
+    fail: 58
+    sell: 0
+  - attack: 20
+    attackIncrease: 5
+    cost: 7
+    probability: 42
+    fail: 58
+    sell: 0
+  - attack: 25
+    attackIncrease: 5
+    cost: 8
+    probability: 42
+    fail: 58
+    sell: 0
+  - attack: 30
+    attackIncrease: 5
+    cost: 8
+    probability: 42
+    fail: 58
+    sell: 0
+  - attack: 35
+    attackIncrease: 5
+    cost: 8
+    probability: 42
+    fail: 58
+    sell: 0
+  - attack: 40
+    attackIncrease: 10
+    cost: 10
+    probability: 38.85
+    fail: 61.15
+    sell: 0
+  - attack: 50
+    attackIncrease: 30
+    cost: 10
+    probability: 36.75
+    fail: 63.25
+    sell: 0
+  - attack: 80
+    attackIncrease: 0
     cost: 12
-    probability: 50
-    fail: 50
-    sell: 0
-  - attack: 0
-    attackIncrease: 0
-    cost: 0
-    probability: 0
-    fail: 0
-    sell: 0
-  - attack: 0
-    attackIncrease: 0
-    cost: 0
-    probability: 0
-    fail: 0
-    sell: 0
-  - attack: 0
-    attackIncrease: 0
-    cost: 0
-    probability: 0
-    fail: 0
-    sell: 0
-  - attack: 0
-    attackIncrease: 0
-    cost: 0
-    probability: 0
-    fail: 0
-    sell: 0
-  - attack: 0
-    attackIncrease: 0
-    cost: 0
-    probability: 0
-    fail: 0
-    sell: 0
-  - attack: 0
-    attackIncrease: 0
-    cost: 0
-    probability: 0
-    fail: 0
-    sell: 0
-  - attack: 0
-    attackIncrease: 0
-    cost: 0
-    probability: 0
-    fail: 0
-    sell: 0
-  - attack: 0
-    attackIncrease: 0
-    cost: 0
-    probability: 0
-    fail: 0
-    sell: 0
-  - attack: 0
-    attackIncrease: 0
-    cost: 0
-    probability: 0
-    fail: 0
+    probability: 35
+    fail: 75
     sell: 0

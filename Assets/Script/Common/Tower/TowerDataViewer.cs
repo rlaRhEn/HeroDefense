@@ -47,7 +47,7 @@ public class TowerDataViewer : MonoBehaviour
         //textInfo.text =
         textLevel.text = currentTower.Level.ToString();
         textAttack.text = currentTower.Attack.ToString();
-        textUpgrade.text = currentTower.Level + " -> " + (currentTower.Level+1) + "\n 성공확률: " + currentTower.Probablilty + "%" + "\n실패(유지): " + currentTower.Fail + "%"; 
+        textUpgrade.text = currentTower.Level + " -> " + (currentTower.Level+1) + "\n 성공확률: " + currentTower.Probablilty + "%" + "\n실패(하락): " + currentTower.Fail + "%"; 
         textAttackIncrease.text = currentTower.AttackIncrease.ToString();
         textCost.text = currentTower.Cost.ToString();
 
@@ -58,12 +58,13 @@ public class TowerDataViewer : MonoBehaviour
     {
         //타워 업그레이드 시도 (성공: true , 실패: false)
         bool isSuccess = currentTower.Upgrade();
+        UpdateTowerData();
 
-        if(isSuccess == true)
-        {
-            //타워가 업그레이드 성공 시 타워 정보 갱신
-            UpdateTowerData();
-        }
+        //if(isSuccess == true)
+        //{
+        //    //타워가 업그레이드 성공 시 타워 정보 갱신
+        //    UpdateTowerData();
+        //}
     }
     public void OnClickEventTowerSell() //타워 판매
     {

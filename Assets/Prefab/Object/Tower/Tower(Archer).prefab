@@ -2772,7 +2772,7 @@ GameObject:
   - component: {fileID: -1100608293217020645}
   - component: {fileID: 5016222255747385203}
   m_Layer: 5
-  m_Name: Tower(Normal01)
+  m_Name: Tower(Archer)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

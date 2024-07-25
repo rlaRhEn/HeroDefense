@@ -5,14 +5,14 @@ using UnityEngine.Events;
 using UGS;
 
 public enum WeaponState { SearchTarget, AttackToTarget}
-public class TowerCon : MonoBehaviour //시발 싹 다 고쳐야하냐?;;;;
+public class TowerCon : MonoBehaviour 
 {
     public SPUM_Prefabs spum_Prefabs;
     [SerializeField] TowerTemplate towerTemplate;
     [SerializeField] PlayerGold playerGold;
     [Header("Stat")]
     [SerializeField] int characterCode, level;
-    [SerializeField] float attackSpeed, speed, attackTimer;
+    [SerializeField] float attackSpeed, attackTimer;
     [SerializeField] string type;
     [SerializeField] float attackRange;// 현재 타겟
 
@@ -24,7 +24,7 @@ public class TowerCon : MonoBehaviour //시발 싹 다 고쳐야하냐?;;;;
     public float AttackIncrease => towerTemplate.weapon[level].attackIncrease;
     public int Cost => towerTemplate.weapon[level].cost;
     public float Probablilty => towerTemplate.weapon[level].probability;
-    public int Fail => towerTemplate.weapon[level].fail;
+    public float Fail => towerTemplate.weapon[level].fail;
 
     public float Range => attackRange;
     public int Level => level+1;
@@ -53,10 +53,10 @@ public class TowerCon : MonoBehaviour //시발 싹 다 고쳐야하냐?;;;;
     void Start()
     {
         playerGold = GameObject.Find("GameManager").GetComponent<PlayerGold>();
-        attackSpeed = characterBal.Balance.BalanceMap[characterCode].attackSpeed;
-        attackRange = characterBal.Balance.BalanceMap[characterCode].attackRange;
-        type = characterBal.Balance.BalanceMap[characterCode].type;
-        speed = characterBal.Balance.BalanceMap[characterCode].speed;
+
+        attackSpeed = characterBal.Balance.BalanceMap[characterCode].attackSpeed; //고정
+        attackRange = characterBal.Balance.BalanceMap[characterCode].attackRange; //고정
+        type = characterBal.Balance.BalanceMap[characterCode].type; //고정
         level = 0;
 
     }
@@ -236,16 +236,22 @@ public class TowerCon : MonoBehaviour //시발 싹 다 고쳐야하냐?;;;;
         }
         else // 10레벨 이상일 시 레벨 하락
         {
+            if(level > 0)
+                level--;
             Debug.Log("강화 실패");
+            Debug.Log(level);
             return false;
+
+
+
         }
     }
     public bool TrySuccess()
     {
         float randomValue = Random.value; // 0.0에서 1.0사이의 난수를 생성
-        Debug.Log(randomValue);
-        return randomValue < towerTemplate.weapon[level + 1].probability / 100; //레벨당 확률로 true 변화
+        return randomValue < towerTemplate.weapon[level+1].probability / 100; //레벨당 확률로 true 변화
     }
+
     public void Sell()
     {
         //골드 증가

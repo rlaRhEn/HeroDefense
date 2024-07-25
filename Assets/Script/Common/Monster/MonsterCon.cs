@@ -145,9 +145,9 @@ public class MonsterCon : MonoBehaviour
         //적의 체력이 damage만큼 감소해서 죽을 상황일 때 여러타워의 공격을 동시에 받으면
         //Ondie()가 여러번 실행 할 수 있다 현재 적의 상태가 사망상태이면 아래코드를 실행하지않는다.
         if (isDie == true) return;
-        currentHp -= damage;
+        currentHp -= (damage-armor);
         GameObject damageText = Instantiate(dmgText, hitPos, Quaternion.identity, canvas.transform);
-        damageText.GetComponent<Text>().text = damage.ToString();
+        damageText.GetComponent<Text>().text = (damage-armor).ToString();
 
         if (currentHp <= 0) //체력 0이하 속도0,사망, 태그
         {

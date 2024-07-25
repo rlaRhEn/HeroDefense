@@ -8,7 +8,7 @@ public class DestroyTest : MonoBehaviour
     void Update()
     {
         destroyTime += Time.deltaTime;
-        if(destroyTime >= 0.25f)
+        if(destroyTime >= 0.5f)
         {
             Destroy(gameObject);
         }

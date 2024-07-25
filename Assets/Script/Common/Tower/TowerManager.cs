@@ -71,7 +71,7 @@ public class TowerManager : MonoBehaviour
     {
         return selectedTile;
     }
-    public void BuildTower()
+    public void BuildTower() //·£´ý ¼ÒÈ¯
     {
         Transform selecteTile = GetSelectedTile();
         if(selecteTile != null)

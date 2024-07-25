@@ -5,12 +5,9 @@ using UnityEngine.UI;
 
 public class DamageText : MonoBehaviour
 {
-    //private float moveSpeed;
     private float alphaSpeed;
-    //private float destroyTime;
     [SerializeField]Text text;
     [SerializeField]Color alpha;
-    //public int damage;
 
     void Start()
     {

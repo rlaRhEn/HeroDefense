@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class TowerSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject towerPrefab;
+    [SerializeField] GameObject[] towerPrefab;
 
     [SerializeField] int towerBuildGold = 50;
     [SerializeField] PlayerGold playerGold; 
 
     public void SpawnTower(Transform tileTransform)
     {
+        int randomTower;
+        randomTower = Random.Range(0, towerPrefab.Length);
         //타워 건설만큼의 돈 없으면 건설 x
         if(towerBuildGold > playerGold.CurrentGold)
         {
@@ -28,7 +30,7 @@ public class TowerSpawner : MonoBehaviour
         playerGold.CurrentGold -= towerBuildGold;
         //선택한 타일의 위치에 타워건설(타일 보다 z축 -1의 위치에 배치)
         Vector3 position = tileTransform.position + Vector3.back;
-        GameObject tower =  Instantiate(towerPrefab, position, Quaternion.identity);
+        GameObject tower =  Instantiate(towerPrefab[randomTower], position, Quaternion.identity);
         tower.GetComponent<TowerCon>().SetUp(tile);
     }
 }

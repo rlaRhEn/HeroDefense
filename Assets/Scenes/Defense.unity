@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3805dbe5999a0874498cbd30ebfd561b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 6621557017117235484, guid: b863f824da3a10145aebec099f964dd7, type: 3}
+  towerPrefab: []
   towerBuildGold: 50
   playerGold: {fileID: 1493725922}
 --- !u!114 &10318051
@@ -2311,7 +2311,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "0 -> 1\n\uC131\uACF5\uD655\uB960: 000%\n\uC2E4\uD328(\uC720\uC9C0): 000%\n"
+  m_Text: "0 -> 1\n\uC131\uACF5\uD655\uB960: 000%\n\uC2E4\uD328(\uD558\uB77D): 000%\n"
 --- !u!222 &158941019
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6553,7 +6553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &506457584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12483,8 +12483,8 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "\uB0A8\uC544\uC788\uB294 \uC801: 00"
 --- !u!222 &822082665

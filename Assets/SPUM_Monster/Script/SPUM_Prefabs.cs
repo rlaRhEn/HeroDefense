@@ -50,4 +50,19 @@ public class SPUM_Prefabs : MonoBehaviour
             }
         }
     }
+    //public void PlayAnimation(int num)
+    //{
+    //    switch (num)
+    //    {
+    //        case 0: // idle
+    //            _anim.SetFloat("0_idle", 0f);
+    //            break;
+    //        case 1: // 
+    //            _anim.SetTrigger("Attack");
+    //            _anim.SetFloat("2_Attack_Normal", 0f);
+    //            break;
+    //        default:
+    //            break;
+    //    }
+    //}
 }
