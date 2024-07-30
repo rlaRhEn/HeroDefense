@@ -2769,8 +2769,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3058449090740946185}
   - component: {fileID: 1002232097411468905}
-  - component: {fileID: -1100608293217020645}
   - component: {fileID: 5016222255747385203}
+  - component: {fileID: 3586846777375700433}
   m_Layer: 5
   m_Name: Tower(Archer)
   m_TagString: Player
@@ -2821,32 +2821,6 @@ MonoBehaviour:
   UnitTypeChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &-1100608293217020645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6621557017117235484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4991327e4519025448c425ef17dc39ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spum_Prefabs: {fileID: 0}
-  towerTemplate: {fileID: 11400000, guid: 66174857b4041644b9cbe5e1d2f7ac42, type: 2}
-  characterCode: 0
-  level: 0
-  attack: 0
-  attackSpeed: 0
-  speed: 0
-  attackTimer: 0
-  type: 
-  attackRange: 0
-  target: {fileID: 0}
-  goalPos: {x: 0, y: 0, z: 0}
-  tower_State: 0
-  weaponState: 0
 --- !u!70 &5016222255747385203
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2863,6 +2837,31 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.3}
   m_Size: {x: 0.5, y: 0.9}
   m_Direction: 0
+--- !u!114 &3586846777375700433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6621557017117235484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6417fa8d1f76446a48c4d1e499950f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spum_Prefabs: {fileID: 0}
+  towerTemplate: {fileID: 11400000, guid: 66174857b4041644b9cbe5e1d2f7ac42, type: 2}
+  playerGold: {fileID: 0}
+  characterCode: 0
+  level: 0
+  attackSpeed: 0
+  attackTimer: 0
+  type: 
+  attackRange: 0
+  target: {fileID: 0}
+  ownerTile: {fileID: 0}
+  goalPos: {x: 0, y: 0, z: 0}
+  weaponState: 0
 --- !u!1 &6702462705120367821
 GameObject:
   m_ObjectHideFlags: 0

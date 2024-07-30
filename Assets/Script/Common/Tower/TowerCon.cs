@@ -3,20 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UGS;
+using TMPro;
 
 public enum WeaponState { SearchTarget, AttackToTarget}
-public class TowerCon : MonoBehaviour 
+public abstract class TowerCon : MonoBehaviour 
 {
     public SPUM_Prefabs spum_Prefabs;
     [SerializeField] TowerTemplate towerTemplate;
     [SerializeField] PlayerGold playerGold;
+    [SerializeField] TmpFadeInOut tmpFadeinout;
     [Header("Stat")]
     [SerializeField] int characterCode, level;
     [SerializeField] float attackSpeed, attackTimer;
     [SerializeField] string type;
     [SerializeField] float attackRange;// 현재 타겟
 
-    [SerializeField] Transform target;
+    [SerializeField]protected Transform target;
 
     [SerializeField]Tile ownerTile;
 
@@ -47,6 +49,7 @@ public class TowerCon : MonoBehaviour
 
     private void Awake()
     {
+        tmpFadeinout = GameObject.Find("TmpFadeInOut").GetComponent<TmpFadeInOut>();
         spum_Prefabs = GetComponent<SPUM_Prefabs>();
         UnityGoogleSheet.Load<characterBal.Balance>();
     }
@@ -54,7 +57,8 @@ public class TowerCon : MonoBehaviour
     {
         playerGold = GameObject.Find("GameManager").GetComponent<PlayerGold>();
 
-        attackSpeed = characterBal.Balance.BalanceMap[characterCode].attackSpeed; //고정
+        attackSpeed = 1.5f;
+        //attackSpeed = characterBal.Balance.BalanceMap[characterCode].attackSpeed; //고정
         attackRange = characterBal.Balance.BalanceMap[characterCode].attackRange; //고정
         type = characterBal.Balance.BalanceMap[characterCode].type; //고정
         level = 0;
@@ -164,7 +168,7 @@ public class TowerCon : MonoBehaviour
                         {
                             closestDisSqr = distance;
                             closestTarget = monster.transform;
-                            spum_Prefabs.PlayAnimation("0_idle");
+                            //spum_Prefabs.PlayAnimation("0_idle");
                         }
                     }
                 }
@@ -200,20 +204,19 @@ public class TowerCon : MonoBehaviour
             }
             
             yield return new WaitForSeconds(attackSpeed);
-            //직업당 공격 프로젝타일 바꿔야함
-            DoAttacker();
-            Transform projectile =  SetProjectile();//
-            projectile.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            projectile.GetComponent<Projectile>().Setup(target, towerTemplate.weapon[level].attack);
+            DoAttacker(); //공격 애니메이션
+            Transform projectile = SetProjectile();//   
+            projectile.GetComponent<Projectile>().Setup(target, towerTemplate.weapon[level].attack); //캐릭터 공격력
             
         }
     }
-    public Transform SetProjectile() //overrride 대상
-    {
-        Transform projectile = GameManager.instance.pool.GetProJectile(0).transform; //직업당 공격 프로젝타일 바꿔야함
-        return projectile; 
+    public virtual Transform SetProjectile() //overrride 대상
+    { //직업당 공격 프로젝타일 바꿔야함
+
+
+        return null;
     }
-    public void DoAttacker() //override 대상
+    public  virtual void DoAttacker() //override 대상
     {
         spum_Prefabs.PlayAnimation("2_Attack_Normal");
         spum_Prefabs.PlayAnimation("0_idle");
@@ -231,23 +234,38 @@ public class TowerCon : MonoBehaviour
         if (TrySuccess())
         {
             level++;
+            Invoke("Success",1f);
+            //성공 사운드
             Debug.Log("강화성공");
             return true;
         }
         else // 10레벨 이상일 시 레벨 하락
         {
-            if(level > 0)
+            if (level > 0)
                 level--;
+            Invoke("Failed", 1f);
+            //실패 사운드
             Debug.Log("강화 실패");
-            Debug.Log(level);
+            //Debug.Log(level);
             return false;
-
-
 
         }
     }
+    public void Success()
+    {
+        StartCoroutine(tmpFadeinout.SuccessFadeInAndOutText());
+    
+        //성공 이미지 띄우기
+    }
+    public void Failed()
+    {
+        StartCoroutine(tmpFadeinout.FailedFadeInAndOutText());
+        //실패 이미지 띄우기
+    }
+
     public bool TrySuccess()
     {
+
         float randomValue = Random.value; // 0.0에서 1.0사이의 난수를 생성
         return randomValue < towerTemplate.weapon[level+1].probability / 100; //레벨당 확률로 true 변화
     }

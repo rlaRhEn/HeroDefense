@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc0cf6b3689d04e4b85eb8327a20fc47, type: 3}
-  m_Name: Tower(Normal01)
+  m_Name: Tower(Archer)
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 6621557017117235484, guid: b863f824da3a10145aebec099f964dd7, type: 3}
   weapon:

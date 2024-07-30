@@ -58,7 +58,8 @@ public class TowerDataViewer : MonoBehaviour
     {
         //타워 업그레이드 시도 (성공: true , 실패: false)
         bool isSuccess = currentTower.Upgrade();
-        UpdateTowerData();
+        Invoke("UpdateTowerData", 1f); // 텍스트와 동시에 결과 발표
+        
 
         //if(isSuccess == true)
         //{
