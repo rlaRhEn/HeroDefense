@@ -8,6 +8,8 @@ using TMPro;
 public enum WeaponState { SearchTarget, AttackToTarget}
 public abstract class TowerCon : MonoBehaviour 
 {
+    public WeaponState weaponState = WeaponState.SearchTarget;
+
     public SPUM_Prefabs spum_Prefabs;
     [SerializeField] TowerTemplate towerTemplate;
     [SerializeField] PlayerGold playerGold;
@@ -45,7 +47,7 @@ public abstract class TowerCon : MonoBehaviour
     //    death
     //}
     //public TowerState tower_State;
-    public WeaponState weaponState = WeaponState.SearchTarget;
+   
 
     private void Awake()
     {
@@ -210,13 +212,13 @@ public abstract class TowerCon : MonoBehaviour
             
         }
     }
-    public virtual Transform SetProjectile() //overrride 대상
+    public virtual Transform SetProjectile()
     { //직업당 공격 프로젝타일 바꿔야함
 
 
         return null;
     }
-    public  virtual void DoAttacker() //override 대상
+    public  virtual void DoAttacker() 
     {
         spum_Prefabs.PlayAnimation("2_Attack_Normal");
         spum_Prefabs.PlayAnimation("0_idle");
