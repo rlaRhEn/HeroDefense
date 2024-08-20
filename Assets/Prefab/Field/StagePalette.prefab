@@ -41,7 +41,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37843748706663278}
   m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 0}
+  m_CellSize: {x: 0.5, y: 0.5, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -124,6 +124,16 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 10
       m_TileSpriteIndex: 9
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 1, y: 3, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 13
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -247,6 +257,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 0bbec85c260d72e408577a7a3efbd619, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: a3931d14c2dd72d4f9b16cb129a015ae, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: e86718cc3738cbd47a0c3f02278c3d08, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 2
     m_Data: {fileID: -730640991, guid: cb2a12b0c511bc844bfbfe09bd978424, type: 3}
@@ -272,8 +284,10 @@ Tilemap:
     m_Data: {fileID: 1176448948, guid: cb2a12b0c511bc844bfbfe09bd978424, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1993664771, guid: cb2a12b0c511bc844bfbfe09bd978424, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 1851848851, guid: cb2a12b0c511bc844bfbfe09bd978424, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 13
+  - m_RefCount: 14
     m_Data:
       e00: 1
       e01: 0
@@ -292,7 +306,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 13
+  - m_RefCount: 14
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -374,6 +388,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4268772336562584040}
     m_Modifications:
+    - target: {fileID: 1243738516937771108, guid: f2dec7009d41c79488979cf7e7910c70, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1843610387953987459, guid: f2dec7009d41c79488979cf7e7910c70, type: 3}
       propertyPath: m_Name
       value: TileField
@@ -495,7 +513,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4604876666522832864, guid: 04f26a9014f665b40ac8424467f22d2f, type: 3}
   m_PrefabInstance: {fileID: 7416775664964447301}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4306443750536895923
+--- !u!114 &9210318410168680849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

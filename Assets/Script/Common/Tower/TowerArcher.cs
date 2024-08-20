@@ -6,8 +6,7 @@ public class TowerArcher : TowerCon
 {
     public override void DoAttacker()
     {
-        spum_Prefabs.PlayAnimation("2_Attack_Bow");
-        spum_Prefabs.PlayAnimation("0_idle");
+        spum_Prefabs.PlayAnimation(3);
     }
     public override Transform SetProjectile()
     {

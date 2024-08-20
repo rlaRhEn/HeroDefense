@@ -11,7 +11,7 @@ public class WaveSystem : MonoBehaviour
     public int CurrentWave => currentWaveIndex + 1; //시작이 0이기 때문에 +1
     public int MaxWave => waves.Length;
 
-    public void StartWave() //빠르게 진행하고 싶으면 여러번 시작 가능하게끔
+    public void StartWave() //
     {
         if(currentWaveIndex < waves.Length-1)
         {

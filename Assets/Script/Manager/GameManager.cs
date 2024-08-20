@@ -7,14 +7,18 @@ using UGS;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+
+    [SerializeField] MonsterSpawner monsterSpawner;
     public ObjectPool pool;
 
+    public Text nextWaveText;
     public Dictionary<int, monsterBal.Data> monsterData;
-    
+    [SerializeField] private float roundTimer;
+
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -24,6 +28,28 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        roundTimer = 10;
+    }
+    private void Update()
+    {
+        NextWaveTimer();
+
+
+    }
+    public void NextWaveTimer()
+    {
+        nextWaveText.text = " ";
+        if(monsterSpawner.monsterCount == 0)
+        {
+            roundTimer -= Time.deltaTime;
+            nextWaveText.text = "Next Wave: " + Mathf.Round(roundTimer);
+            if (roundTimer < 0)
+            {
+                GameObject.Find("PoolManager").GetComponent<WaveSystem>().StartWave(); //NextWave
+                roundTimer = 10;
+            }
+        }
+        
     }
     void LoadData()
     {
@@ -37,5 +63,10 @@ public class GameManager : MonoBehaviour
             return monsterData[monsterCode];
         }
         return null;
+    }
+
+    public void GameOver()
+    { 
+        Debug.Log("게임오버");
     }
 }

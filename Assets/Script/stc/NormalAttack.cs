@@ -7,7 +7,7 @@ public class NormalAttack : AttackTest
     public override void DoAttack()
     {
         spum_prefabs.PlayAnimation("2_Attack_Normal");
-        spum_prefabs.PlayAnimation("0_idle");
+        //spum_prefabs.PlayAnimation("0_idle");
        
     }
 }

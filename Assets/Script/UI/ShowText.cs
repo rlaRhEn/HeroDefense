@@ -10,12 +10,15 @@ public class ShowText : MonoBehaviour
 
     public Text timeText, goldText, waveText,monsterCountText;
     public Text hpText, armorText, typeText;
+    [SerializeField] Slider limitMonsterSliderBar;
     [SerializeField] Font customFont;
 
 
     [SerializeField] PlayerGold playerGold;
     [SerializeField] WaveSystem waveSystem;
     [SerializeField] MonsterSpawner monsterSpawner;
+
+    int maxCount;
 
     private void SetAllTextFont() //텍스트 폰트설정
     {
@@ -33,6 +36,7 @@ public class ShowText : MonoBehaviour
     {
         StartCoroutine(Initialize());
         SetAllTextFont();
+        maxCount = 100;
     }
     private IEnumerator Initialize()
     {
@@ -60,15 +64,15 @@ public class ShowText : MonoBehaviour
     public void CountDown()
     {
         limitTime -= Time.deltaTime;
-        timeText.text = "남은 시간: " + Mathf.Round(limitTime);
-        if (limitTime <= 0) //필드에 몬스터가 남아있다면 게임패배
+        timeText.text = "남은 시간 " + Mathf.Round(limitTime);
+        if (limitTime <= 0) //시간 초과 시
         {
-            //GameOver();
+            GameManager.instance.GameOver();
         }
     }
     public void RoundClear()
     {
-        limitTime = 90;
+        limitTime += 90;
     }
     void ShowGold()
     {
@@ -76,11 +80,12 @@ public class ShowText : MonoBehaviour
     }
     void ShowMonsterCount()
     {
-        monsterCountText.text = "남아있는 적: " +monsterSpawner.currentEnemyCount.ToString();
+        limitMonsterSliderBar.value = (float)monsterSpawner.currentEnemyCount/maxCount;
+        monsterCountText.text = monsterSpawner.currentEnemyCount.ToString() + "/" + maxCount.ToString(); //현재 웨이브 x 총합
     }
     void ShowWave()
     {
-        waveText.text = "Wave: "+ waveSystem.CurrentWave + "/" + waveSystem.MaxWave;
+        waveText.text = "WAVE "+ waveSystem.CurrentWave + "/" + waveSystem.MaxWave;
     }
    
 }

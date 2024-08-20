@@ -6,8 +6,7 @@ public class TowerKnight :TowerCon
 {
     public override void DoAttacker()
     {
-        spum_Prefabs.PlayAnimation("2_Attack_Normal");
-        spum_Prefabs.PlayAnimation("0_idle");
+        spum_Prefabs.PlayAnimation(1);
     }
     public override Transform SetProjectile()
     {

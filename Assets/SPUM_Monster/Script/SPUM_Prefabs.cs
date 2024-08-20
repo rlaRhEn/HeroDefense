@@ -50,19 +50,32 @@ public class SPUM_Prefabs : MonoBehaviour
             }
         }
     }
-    //public void PlayAnimation(int num)
-    //{
-    //    switch (num)
-    //    {
-    //        case 0: // idle
-    //            _anim.SetFloat("0_idle", 0f);
-    //            break;
-    //        case 1: // 
-    //            _anim.SetTrigger("Attack");
-    //            _anim.SetFloat("2_Attack_Normal", 0f);
-    //            break;
-    //        default:
-    //            break;
-    //    }
-    //}
+    public void PlayAnimation(int num)
+    {
+        switch (num)
+        {
+            case 0: // idle
+                _anim.SetFloat("IdleState", 0f);
+                break;
+            case 1: // attackKnight
+                _anim.SetTrigger("NormalAttack");
+                _anim.SetFloat("IdleState", 1f);
+                //_anim.SetFloat("AttackState", 0f);
+
+                break;
+            case 2: //attackMagic
+                _anim.SetTrigger("MagicAttack");
+                _anim.SetFloat("IdleState", 1f);
+                break;
+            case 3: //attackBow
+                _anim.SetTrigger("BowAttack");
+                _anim.SetFloat("IdleState", 1f);
+                break;
+
+
+
+            default:
+                break;
+        }
+    }
 }

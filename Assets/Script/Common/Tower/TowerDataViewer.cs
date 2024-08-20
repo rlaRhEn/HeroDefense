@@ -14,6 +14,8 @@ public class TowerDataViewer : MonoBehaviour
 
     [SerializeField] Button buttonUpgrade;
 
+    
+
     [SerializeField] TowerAttackRange towerAttackRange;
     TowerCon currentTower;
 

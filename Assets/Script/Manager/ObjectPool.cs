@@ -7,6 +7,7 @@ public class ObjectPool : MonoBehaviour
     //프리팹 보관할 변수 2개있으면
     public GameObject[] monsterPrefabs;
     public GameObject[] projectilePrefabs;
+   
 
     //풀 담당을 하는 리스트들 2개필요
     public List<GameObject>[] monsterPools;
@@ -22,12 +23,13 @@ public class ObjectPool : MonoBehaviour
             monsterPools[index] = new List<GameObject>();
         }
 
-        projectilePools = new List<GameObject>[monsterPrefabs.Length];
+        projectilePools = new List<GameObject>[projectilePrefabs.Length];
         //발사체 자동생성
         for (int index = 0; index < projectilePools.Length; index++)
         {
             projectilePools[index] = new List<GameObject>();
         }
+
     }
     public GameObject GetMonster(int index)//게임오브젝트 반환 함수
     {
