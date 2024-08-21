@@ -2852,6 +2852,7 @@ MonoBehaviour:
   spum_Prefabs: {fileID: 0}
   towerTemplate: {fileID: 11400000, guid: 66174857b4041644b9cbe5e1d2f7ac42, type: 2}
   playerGold: {fileID: 0}
+  tmpFadeinout: {fileID: 0}
   characterCode: 0
   level: 0
   attackSpeed: 0
@@ -2861,7 +2862,7 @@ MonoBehaviour:
   target: {fileID: 0}
   ownerTile: {fileID: 0}
   goalPos: {x: 0, y: 0, z: 0}
-  weaponState: 0
+  tower_State: 0
 --- !u!1 &6702462705120367821
 GameObject:
   m_ObjectHideFlags: 0

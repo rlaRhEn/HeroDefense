@@ -14,81 +14,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 4593263719482473677, guid: 3b8e514972cc9a644aaff99172b47090, type: 3}
   weapon:
+  - attack: 3
+    attackIncrease: 2
+    cost: 5
+    probability: 52.5
+    fail: 47.5
+    sell: 25
   - attack: 5
     attackIncrease: 2
     cost: 5
     probability: 52.5
     fail: 47.5
-    sell: 0
+    sell: 25
   - attack: 7
-    attackIncrease: 2
-    cost: 5
-    probability: 52.5
-    fail: 47.5
-    sell: 0
-  - attack: 9
     attackIncrease: 2
     cost: 5
     probability: 47.25
     fail: 52.75
-    sell: 0
-  - attack: 11
+    sell: 25
+  - attack: 9
     attackIncrease: 2
     cost: 5
     probability: 42
     fail: 58
-    sell: 0
-  - attack: 13
+    sell: 25
+  - attack: 11
     attackIncrease: 2
     cost: 7
     probability: 42
     fail: 58
-    sell: 0
-  - attack: 15
-    attackIncrease: 5
+    sell: 25
+  - attack: 13
+    attackIncrease: 3.5
     cost: 7
     probability: 42
     fail: 58
-    sell: 0
+    sell: 50
+  - attack: 16.5
+    attackIncrease: 3.5
+    cost: 7
+    probability: 42
+    fail: 58
+    sell: 50
   - attack: 20
-    attackIncrease: 5
-    cost: 7
-    probability: 42
-    fail: 58
-    sell: 0
-  - attack: 25
-    attackIncrease: 5
+    attackIncrease: 3.5
     cost: 8
     probability: 42
     fail: 58
-    sell: 0
-  - attack: 30
-    attackIncrease: 5
+    sell: 50
+  - attack: 23.5
+    attackIncrease: 3.5
     cost: 8
     probability: 42
     fail: 58
-    sell: 0
-  - attack: 35
-    attackIncrease: 5
+    sell: 50
+  - attack: 27
+    attackIncrease: 3.5
     cost: 8
     probability: 42
     fail: 58
-    sell: 0
-  - attack: 40
+    sell: 50
+  - attack: 30.5
     attackIncrease: 10
     cost: 10
     probability: 38.85
     fail: 61.15
-    sell: 0
-  - attack: 50
+    sell: 50
+  - attack: 40.5
     attackIncrease: 30
     cost: 10
     probability: 36.75
     fail: 63.25
-    sell: 0
-  - attack: 80
+    sell: 50
+  - attack: 70.5
     attackIncrease: 0
-    cost: 12
-    probability: 35
-    fail: 75
-    sell: 0
+    cost: 99999
+    probability: 0
+    fail: 0
+    sell: 5000

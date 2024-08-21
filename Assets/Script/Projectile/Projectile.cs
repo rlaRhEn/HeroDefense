@@ -7,7 +7,7 @@ public abstract class Projectile : MonoBehaviour
    
     protected float damage;
 
-    protected Transform target;
+    [SerializeField]protected Transform target;
     protected MoveMent2D movement2D;
 
     public void Setup(Transform target,float damage)
@@ -26,6 +26,6 @@ public abstract class Projectile : MonoBehaviour
         Vector3 pos = Camera.main.WorldToScreenPoint(collision.transform.position);
         collision.GetComponent<MonsterCon>().TakeDamage(pos, damage);
         
-        gameObject.SetActive(false);
+        gameObject.SetActive(false); //´êÀº Áï½Ã ¹Ù·Î ¾ø¾îÁü
     }
 }

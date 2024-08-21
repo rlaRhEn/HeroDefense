@@ -11,6 +11,8 @@ public class ShowText : MonoBehaviour
     public Text timeText, goldText, waveText,monsterCountText;
     public Text hpText, armorText, typeText;
     [SerializeField] Slider limitMonsterSliderBar;
+
+
     [SerializeField] Font customFont;
 
 

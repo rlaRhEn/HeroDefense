@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 559ff4936f926a040a93159911db0d70
+guid: 55d5df319422dd14ca7fbca75c809376
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - RixInooAriDuri
+  - Maplestory
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

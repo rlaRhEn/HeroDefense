@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class Projectile01 : Projectile
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Monster")) return; //적이 아닌 대상과 부딪히면
