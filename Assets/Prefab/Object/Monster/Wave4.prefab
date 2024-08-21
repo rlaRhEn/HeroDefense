@@ -2471,8 +2471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0, z: 0}
-  moveSpeed: 8
-  monsterCode: 0
+  moveSpeed: 3.5
 --- !u!114 &3275495688081262423
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,6 @@ public class MoveMent2D : MonoBehaviour
     [SerializeField] Vector3 moveDirection = Vector3.zero;
     public float moveSpeed;
 
-    [SerializeField] int monsterCode;
     void Start()
     { 
 

@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] MonsterSpawner monsterSpawner;
     public ObjectPool pool;
 
+    [SerializeField] GameObject victory, fail;
+
     public Text nextWaveText;
     public Dictionary<int, monsterBal.Data> monsterData;
     [SerializeField] private float roundTimer;
@@ -66,7 +68,15 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameOver()
-    { 
+    {
+        fail.SetActive(true);
+        Time.timeScale = 0;
         Debug.Log("게임오버");
     }
+    public void GameClear()
+    {
+        victory.SetActive(true);
+        Time.timeScale = 0;
+    }
+
 }
