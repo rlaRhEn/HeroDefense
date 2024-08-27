@@ -9,7 +9,7 @@ public class ShowText : MonoBehaviour
     [SerializeField] float limitTime;
 
     public Text timeText, goldText, waveText,monsterCountText;
-    public Text hpText, armorText, typeText;
+    public Text hpText, armorText, nameText;
     [SerializeField] Slider limitMonsterSliderBar;
 
 
@@ -24,7 +24,7 @@ public class ShowText : MonoBehaviour
 
     private void SetAllTextFont() //텍스트 폰트설정
     {
-        Text[] allTextComponents = { timeText, goldText, waveText, monsterCountText, hpText, armorText, typeText };
+        Text[] allTextComponents = { timeText, goldText, waveText, monsterCountText, hpText, armorText, nameText };
 
         foreach(Text textComponents in allTextComponents)
         {
@@ -60,7 +60,7 @@ public class ShowText : MonoBehaviour
         {
             hpText.text = "Hp: " + data.hp;
             armorText.text = "Armor: " + data.armor;
-            typeText.text = "Type: " + data.type;
+            nameText.text =  data.name;
         }
     }
     public void CountDown()

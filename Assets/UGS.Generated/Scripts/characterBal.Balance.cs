@@ -57,12 +57,11 @@ namespace characterBal
 /* Fields. */
 
 		public System.Int32 code;
+		public System.String name;
 		public System.Single attack;
 		public System.Single attackSpeed;
 		public System.Single attackRange;
 		public System.String type;
-		public System.Int32 level;
-		public System.Single speed;
   
 
 #region fuctions

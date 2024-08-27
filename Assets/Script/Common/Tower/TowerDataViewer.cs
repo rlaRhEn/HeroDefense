@@ -30,6 +30,10 @@ public class TowerDataViewer : MonoBehaviour
         {
             ClosePanel();
         }
+        if(Input.GetKeyDown(KeyCode.R)) //단축키
+        {
+            OnClickEventTowerUpgrade();
+        }
     }
 
     public void OpenPanel(Transform towerCon)
@@ -62,12 +66,6 @@ public class TowerDataViewer : MonoBehaviour
         bool isSuccess = currentTower.Upgrade();
         Invoke("UpdateTowerData", 1f); // 텍스트와 동시에 결과 발표
         
-
-        //if(isSuccess == true)
-        //{
-        //    //타워가 업그레이드 성공 시 타워 정보 갱신
-        //    UpdateTowerData();
-        //}
     }
     public void OnClickEventTowerSell() //타워 판매
     {

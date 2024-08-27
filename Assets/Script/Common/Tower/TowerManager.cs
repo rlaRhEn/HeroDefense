@@ -19,6 +19,11 @@ public class TowerManager : MonoBehaviour
     private void Update()
     {
         ClickMouse();
+
+        if(Input.GetKeyDown(KeyCode.Q)) //단축키
+        {
+            BuildTower(); //랜덤 소환
+        }
     }
 
     void ClickMouse()

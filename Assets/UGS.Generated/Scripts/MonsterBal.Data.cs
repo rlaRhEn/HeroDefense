@@ -60,7 +60,7 @@ namespace monsterBal
 		public System.Int32 hp;
 		public System.Single armor;
 		public System.Single moveSpeed;
-		public System.String type;
+		public System.String name;
   
 
 #region fuctions

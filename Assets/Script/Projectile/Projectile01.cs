@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Projectile01 : Projectile
 {
+    private void Update()
+    {
+        if(target == null)
+        {
+            gameObject.SetActive(false);
+        }
+    }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Monster")) return; //적이 아닌 대상과 부딪히면

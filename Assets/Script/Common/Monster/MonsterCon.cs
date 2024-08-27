@@ -10,7 +10,7 @@ public class MonsterCon : MonoBehaviour
     [Header("Stat")]
     public int monsterCode;
     public float currentHp,maxHp, armor, moveSpeed;
-    [SerializeField] string type;
+    [SerializeField] string name;
     [SerializeField] int gold = 10;
 
 
@@ -52,7 +52,7 @@ public class MonsterCon : MonoBehaviour
             maxHp = data.hp;
             armor = data.armor;
             moveSpeed = data.moveSpeed;
-            type = data.type;
+            name = data.name;
             currentHp = maxHp;
         }
     }
@@ -72,7 +72,7 @@ public class MonsterCon : MonoBehaviour
         gameObject.tag = "Monster";
         SetUp(wayPoints);
         spum_prefabs.PlayAnimation("run");
-        transform.localScale = new Vector3(monsterX, 0.7f, 0.7f);
+        //transform.localScale = new Vector3(monsterX, 0.7f, 0.7f);
 
     }
     private void Update()
@@ -155,6 +155,7 @@ public class MonsterCon : MonoBehaviour
             spum_prefabs.PlayAnimation("death");
             moveSpeed = 0;
             Invoke("OnDieMonster", 0.4f);
+            monsterSpawner.monsterList.Remove(monsterSpawner.monsterList[0]);  //
         }
     }
 
@@ -162,7 +163,7 @@ public class MonsterCon : MonoBehaviour
     {
         Destroy(gameObject);
         playerGold.CurrentGold += gold;
-        monsterSpawner.currentEnemyCount--;
+      //
     }
 
 }

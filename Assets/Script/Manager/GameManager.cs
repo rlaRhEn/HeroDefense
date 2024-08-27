@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     public void NextWaveTimer()
     {
         nextWaveText.text = " ";
-        if(monsterSpawner.monsterCount == 0)
+        if(monsterSpawner.monsterList.Count == 0) //
         {
             roundTimer -= Time.deltaTime;
             nextWaveText.text = "Next Wave: " + Mathf.Round(roundTimer);

@@ -37,7 +37,7 @@ public class MonsterSpawner : MonoBehaviour
     }
     private void Update()
     {
-        currentEnemyCount = monsterList.Count;
+        currentEnemyCount = monsterList.Count;//
         if (currentEnemyCount > 100) //¸÷ ÃÊ°ú ½Ã
         {
             GameManager.instance.GameOver();

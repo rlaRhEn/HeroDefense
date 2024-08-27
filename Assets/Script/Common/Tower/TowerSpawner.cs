@@ -13,7 +13,6 @@ public class TowerSpawner : MonoBehaviour
     {
         int randomTower;
         randomTower = Random.Range(0, towerPrefab.Length); //랜덤
-        Debug.Log(randomTower);
         //타워 건설만큼의 돈 없으면 건설 x
         if(towerBuildGold > playerGold.CurrentGold)
         {
