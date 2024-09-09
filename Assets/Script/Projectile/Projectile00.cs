@@ -2,43 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile00 : Projectile
+public class Projectile00 : Projectile //Bow
 {
-    //private void Update()
-    //{
-    //    if (target != null)//타겟이 있으면
-    //    {
-    //        //타겟을 향해 날라감
-    //        Vector3 direction = (target.position - transform.position).normalized;
-    //        movement2D.MoveTo(direction);
-    //    }
-    //    else
-    //    {
-    //        this.gameObject.SetActive(false);
-    //    }
-    //}
-    [SerializeField] Transform head;
+    private void Start()
+    {
+        speed = 7;
+        yPos = 2;
+    }
     private void Update()
     {
-        if (target != null)//타겟이 있으면
-        {
-            //타겟을 향해 날라감
-            //Vector3 direction = (target.position - transform.position).normalized;
-
-            RotateToTarget();
-        }
-        else
-        {
-            this.gameObject.SetActive(false);
-        }
+        AttackArrow();
     }
-    private void RotateToTarget() //수정
+  
+    private void AttackArrow() //자연스러운 공격
     {
-        // 타겟 방향 계산
-        Vector3 direction = (target.position - transform.position).normalized;
-        movement2D.MoveTo(direction);
-        // 화살의 회전
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        if(target != null)
+        { 
+            endPos = (Vector2)target.transform.position + new Vector2(0, 0.25f);
+
+            Vector2 tVec = endPos - (Vector2)transform.position;
+
+            float tDis = tVec.sqrMagnitude;
+            if(tDis > 0.1f)
+            {
+                Vector2 tDirVec = (tVec).normalized;
+                Vector3 tWect;
+                if(yPos == -1f)
+                {
+                    tWect = (speed * (Vector3)tDirVec);
+
+                }
+                else
+                {
+                    yPos -= yPosSave * Time.deltaTime;
+                    tWect = (speed * (Vector3)tDirVec + new Vector3(0, yPos, 0));
+                }
+                transform.position += tWect * Time.deltaTime;
+                transform.up = tWect;
+            }
+        }
+        else { gameObject.SetActive(false); }
     }
 }

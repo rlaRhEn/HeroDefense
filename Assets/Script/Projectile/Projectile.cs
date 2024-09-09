@@ -10,6 +10,15 @@ public abstract class Projectile : MonoBehaviour
     [SerializeField]protected Transform target;
     protected MoveMent2D movement2D;
 
+    [SerializeField] protected float speed, yPos, yPosSave;
+    [SerializeField]protected Vector2 endPos;
+
+    private void Start()
+    {
+     
+        yPosSave = yPos;
+        
+    }
     public void Setup(Transform target,float damage)
     {
         movement2D = GetComponent<MoveMent2D>();

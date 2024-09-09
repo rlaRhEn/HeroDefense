@@ -5,10 +5,8 @@ using UnityEngine.Events;
 using UGS;
 using TMPro;
 
-//public enum WeaponState { SearchTarget, AttackToTarget}
 public abstract class TowerCon : MonoBehaviour 
 {
-    //public WeaponState weaponState = WeaponState.SearchTarget;
 
     public SPUM_Prefabs spum_Prefabs;
     [SerializeField] TowerTemplate towerTemplate;
@@ -62,12 +60,6 @@ public abstract class TowerCon : MonoBehaviour
         level = 0;
 
     }
-    //private void OnEnable()
-    //{
-    //    ChangeState(WeaponState.SearchTarget);
-    //}
-
-    // Update is called once per frame
     void Update()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.localPosition.y * 0.01f);
@@ -77,15 +69,6 @@ public abstract class TowerCon : MonoBehaviour
     {
         this.ownerTile = ownerTile;
     }
-    //public void ChangeState(WeaponState nowstate)//무기 state
-    //{
-    //    //이전 재생중이던 상태 종료
-    //    StopCoroutine(weaponState.ToString());
-    //    //상태 변경
-    //    weaponState = nowstate;
-    //    //새로운 코루틴 실행
-    //    StartCoroutine(weaponState.ToString());
-    //}
     void CheckState(TowerState state = TowerState.idle) //수정
     {
         tower_State = state;
@@ -101,17 +84,7 @@ public abstract class TowerCon : MonoBehaviour
         }
     }
 
-    //public void SetState(TowerState state) //타워 상태 오버로드
-    //{
-    //    tower_State = state;
-    //    switch (tower_State)
-    //    {
-    //        case TowerState.idle:
-    //            break;
-    //        case TowerState.attack:
-    //            break;
-    //    }
-    //}
+  
 
     public void SearchTarget()
     {
@@ -131,7 +104,6 @@ public abstract class TowerCon : MonoBehaviour
                     {
                         closestDisSqr = distance;
                         closestTarget = monster.transform;
-                        //spum_Prefabs.PlayAnimation("0_idle");
                     }
                 }
             }
@@ -240,25 +212,4 @@ public abstract class TowerCon : MonoBehaviour
     }
 }
 
-//public void DoMove() //필요 x
-//{
 
-//    Vector3 _dirVec = goalPos - transform.position;
-//    Vector3 _disVec = (Vector2)goalPos - (Vector2)transform.position;
-//    if (_disVec.sqrMagnitude < 0.1f)
-//    {
-//        SetState(TowerState.idle);
-//        return;
-//    }
-//    Vector3 _dirMVec = _dirVec.normalized;
-//    transform.position += (_dirMVec * speed * Time.deltaTime);
-
-
-//    if (_dirMVec.x > 0) spum_Prefabs.transform.localScale = new Vector3(-1, 1, 1);
-//    else if (_dirMVec.x < 0) spum_Prefabs.transform.localScale = new Vector3(1, 1, 1);
-//}
-//public void SetMovePos(Vector2 pos)//목표지점이동
-//{
-//    goalPos = pos;
-//    SetState(TowerState.run);
-//}
